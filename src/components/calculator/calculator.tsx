@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useDispatch, useStore } from "react-redux";
-import { InitialStateInterface } from "../../interfaces/reducersInterfaces";
-import { minus } from "../../redux/actionTypes/actions";
+import { useDispatch } from "react-redux";
+import { ActionType } from "../../redux/actionTypes";
+import { store } from "../../redux/store/store";
 export interface St {
   firstNumber: number;
   secondNumber: number;
@@ -38,8 +38,14 @@ const Calculator = () => {
         <td>9</td>
       </tr>
       <tr>
-        <td onClick={() => dispatch(minus(st))}>-</td>
-        <td>+</td>
+        <td
+          onClick={() =>
+            dispatch({ type: ActionType.MINUS_OPERATOR, payload: st })
+          }
+        >
+          -
+        </td>
+        <td onClick={() => console.log(store.getState())}>+</td>
         <td>=</td>
       </tr>
     </table>

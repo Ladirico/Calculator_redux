@@ -5,14 +5,13 @@ const initialState: InitialStateInterface = {
   firstNumber: 0,
   secondNumber: 0,
   operator: "",
-  result: 0,
 };
 
 export const calculatorReducer = (
   state: InitialStateInterface = initialState,
   action: Action
 ) => {
-  console.log(action);
+  console.log("Action", action);
   switch (action.type) {
     case "PLUS_OPERATOR":
       console.log("plus", state);
@@ -26,7 +25,12 @@ export const calculatorReducer = (
     case "MINUS_OPERATOR":
       console.log("minus", state);
       console.log("minus payload", action.payload);
-      return {};
+      return {
+        firstNumber: action.payload.firstNumber,
+        secondNumber: action.payload.secondNumber,
+        operator: "+",
+        // result: action.payload.firstNumber + action.payload.secondNumber,
+      };
     default:
       return state;
   }

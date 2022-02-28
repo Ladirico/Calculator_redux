@@ -1,5 +1,5 @@
-import { Action } from "redux";
 import { InitialStateInterface } from "../../interfaces/reducersInterfaces";
+import { Action } from "../actionTypes";
 
 const initialState: InitialStateInterface = {
   firstNumber: 0,
@@ -8,27 +8,25 @@ const initialState: InitialStateInterface = {
   result: 0,
 };
 
-console.log(initialState);
-
 export const calculatorReducer = (
   state: InitialStateInterface = initialState,
   action: Action
 ) => {
+  console.log(action);
   switch (action.type) {
     case "PLUS_OPERATOR":
+      console.log("plus", state);
+      console.log("plus payload", action.payload);
       return {
-        firstNumber: state.firstNumber,
-        secondNumber: state.secondNumber,
-        operator: "+",
-        result: state.firstNumber + state.secondNumber,
+        // firstNumber: state.firstNumber,
+        // secondNumber: state.secondNumber,
+        // operator: "+",
+        // result: state.firstNumber + state.secondNumber,
       };
     case "MINUS_OPERATOR":
-      return {
-        firstNumber: state.firstNumber,
-        secondNumber: state.secondNumber,
-        operator: "-",
-        result: state.firstNumber - state.secondNumber,
-      };
+      console.log("minus", state);
+      console.log("minus payload", action.payload);
+      return {};
     default:
       return state;
   }
